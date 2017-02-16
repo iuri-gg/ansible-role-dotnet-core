@@ -6,7 +6,7 @@
     update_cache: true
 
 - name: .NET | create dotnetdev.list file
-  file: path=/etc/apt/sources.list.d/dotnetdev.list state=present owner=root group=root mode=0644
+  file: path=/etc/apt/sources.list.d/dotnetdev.list state=file owner=root group=root mode=0644
 
 - name: .NET | Add repo for Ubuntu Trusty
   apt_repository:
