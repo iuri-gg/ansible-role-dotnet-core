@@ -5,7 +5,7 @@
     state: latest
     update_cache: true
 
-- name: .NET | create dotnetdev.list file
+- name: .NET | Create dotnetdev.list file
   copy:
     content: ""
     dest: /etc/apt/sources.list.d/dotnetdev.list
