@@ -1,13 +1,15 @@
 ---
+- name: .NET | Create directory
+  file: path=/usr/local/dotnet state=directory mode=0755 owner:root group:root
+
+
 - name: .NET | Install .NET SDK/Runtime
-  become: true
   unarchive:
     src: "{{ dotnet_rhel_url }}"
     dest: "/usr/local/dotnet"
     remote_src: true
 
 - name: .NET | Add dotnet symlink.
-  become: true
   file:
     src: "/usr/local/dotnet/dotnet"
     dest: "/usr/bin/dotnet"
