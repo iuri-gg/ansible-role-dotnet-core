@@ -26,7 +26,7 @@
     state: present
   when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16"
 
-- name: .NET | apt key add
+- name: .NET | Add apt key
   apt_key: keyserver=apt-mo.trafficmanager.net id=417A0893
   register: result
   until: '"failed" not in result'
