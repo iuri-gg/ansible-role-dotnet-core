@@ -1,8 +1,8 @@
 ---
 - name: .NET | Install .NET SDK/Runtime
   unarchive:
-    src: {{ dotnet_rhel_url }}
-    dest: /usr/local/dotnet
+    src: "{{ dotnet_rhel_url }}"
+    dest: "/usr/local/dotnet"
     remote_src: true
 
 - name: .NET | Add dotnet symlink.
