@@ -58,3 +58,6 @@ script:
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  email:
+    on_success: change
+    on_failure: change

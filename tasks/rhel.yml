@@ -1,7 +1,6 @@
 ---
 - name: .NET | Create directory
-  file: path=/usr/local/dotnet state=directory mode=0755 owner:root group:root
-
+  file: path=/usr/local/dotnet state=directory mode=0755
 
 - name: .NET | Install .NET SDK/Runtime
   unarchive:
