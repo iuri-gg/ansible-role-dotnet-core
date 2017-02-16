@@ -1,4 +1,10 @@
 ---
+- name: .NET | Make sure HTTPS is supported by apt
+  package:
+    name: apt-transport-https
+    state: latest
+    update_cache: true
+
 - name: .NET | create dotnetdev.list file
   file: path=/etc/apt/sources.list.d/dotnetdev.list state=touch owner=root group=root mode=0644
 
@@ -18,8 +24,8 @@
   apt_key: keyserver=apt-mo.trafficmanager.net id=417A0893
 
 - name: .NET | Install dotnet core SDK
-  apt:
+  package:
     name: "{{ dotnet_ubuntu_package }}"
-    state: present
+    state: latest
     update_cache: true
 
