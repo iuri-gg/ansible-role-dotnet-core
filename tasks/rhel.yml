@@ -6,6 +6,8 @@
   unarchive:
     src: "{{ dotnet_rhel_url }}"
     dest: "/usr/local/dotnet"
+    owner: root
+    group: root
     remote_src: true
 
 - name: .NET | Add dotnet symlink.
