@@ -2,6 +2,7 @@ Ansible Role: YARN Repository
 =========
 
 [![Build Status](https://travis-ci.org/ocha/ansible-role-dotnet-core.svg?branch=master)](https://travis-ci.org/ocha/ansible-role-dotnet-core)
+[![Ansible Galaxy](https://img.shields.io/ansible/role/15673.svg)](https://galaxy.ansible.com/ocha/dotnet-core)
 
 Installs the [.Net Core SDK/Runtime](https://www.microsoft.com/net) for Ubuntu/RHEL/CentOS.
 

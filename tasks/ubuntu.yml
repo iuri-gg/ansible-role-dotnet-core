@@ -10,7 +10,7 @@
     content: ""
     dest: /etc/apt/sources.list.d/dotnetdev.list
     force: no
-    group: sys
+    group: root
     owner: root
     mode: 0644
 
