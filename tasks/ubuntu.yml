@@ -5,15 +5,6 @@
     state: latest
     update_cache: true
 
-- name: .NET | Create dotnetdev.list file
-  copy:
-    content: ""
-    dest: /etc/apt/sources.list.d/dotnetdev.list
-    force: no
-    group: root
-    owner: root
-    mode: 0644
-
 - name: .NET | Add repo for Ubuntu Trusty
   apt_repository:
     repo: deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main
