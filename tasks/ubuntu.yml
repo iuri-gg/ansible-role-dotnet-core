@@ -1,0 +1,25 @@
+---
+- name: .NET | create dotnetdev.list file
+  file: path=/etc/apt/sources.list.d/dotnetdev.list state=touch owner=root group=root mode=0644
+
+- name: .NET | Add repo for Ubuntu Trusty
+  apt_repository:
+    repo: deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main
+    state: present
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "14"
+
+- name: .NET | Add repo for Ubuntu Xenial
+  apt_repository:
+    repo: deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main
+    state: present
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16"
+
+- name: .NET | apt key add
+  apt_key: keyserver=apt-mo.trafficmanager.net id=417A0893
+
+- name: .NET | Install dotnet core SDK
+  apt:
+    name: "{{ dotnet_ubuntu_package }}"
+    state: present
+    update_cache: true
+
