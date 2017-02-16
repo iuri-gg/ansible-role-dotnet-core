@@ -16,7 +16,7 @@ Role Variables
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     dotnet_rhel_url: "https://go.microsoft.com/fwlink/?LinkID=835016"
-    dotnet_ubuntu_package: "dotnet-dev-1.0.0-preview2.1-003177"
+    dotnet_ubuntu_package: "dotnet-dev-1.0.0-preview2-1-003177"
     
 Generally, these should not be changed, but if this role is out of date, or if you need a very specific version, these can be overridden.
 
