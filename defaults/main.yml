@@ -1,2 +1,2 @@
 ---
-# defaults file for ansible-role-dotnet-core
+dotnet_rhel_url: "https://go.microsoft.com/fwlink/?LinkID=835016"
