@@ -5,8 +5,13 @@
     state: latest
     update_cache: true
 
+- name: .NET | Check if dotnetdev.list is already present.
+  stat: path=/etc/apt/sources.list.d/dotnetdev.list
+  register: dotnet_repofile_result
+
 - name: .NET | create dotnetdev.list file
-  file: path=/etc/apt/sources.list.d/dotnetdev.list state=file owner=root group=root mode=0644
+  file: path=/etc/apt/sources.list.d/dotnetdev.list state=touch owner=root group=root mode=0644
+  when: not dotnet_repofile_result.stat.exists
 
 - name: .NET | Add repo for Ubuntu Trusty
   apt_repository:
@@ -22,10 +27,18 @@
 
 - name: .NET | apt key add
   apt_key: keyserver=apt-mo.trafficmanager.net id=417A0893
+  register: result
+  until: '"failed" not in result'
+  retries: 3
+  delay: 5
 
 - name: .NET | Install dotnet core SDK
   package:
     name: "{{ dotnet_ubuntu_package }}"
     state: latest
     update_cache: true
+  register: result
+  until: '"failed" not in result'
+  retries: 3
+  delay: 5
 
