@@ -5,13 +5,14 @@
     state: latest
     update_cache: true
 
-- name: .NET | Check if dotnetdev.list is already present.
-  stat: path=/etc/apt/sources.list.d/dotnetdev.list
-  register: dotnet_repofile_result
-
 - name: .NET | create dotnetdev.list file
-  file: path=/etc/apt/sources.list.d/dotnetdev.list state=touch owner=root group=root mode=0644
-  when: not dotnet_repofile_result.stat.exists
+  copy:
+    content: ""
+    dest: /etc/apt/sources.list.d/dotnetdev.list
+    force: no
+    group: sys
+    owner: root
+    mode: 0644
 
 - name: .NET | Add repo for Ubuntu Trusty
   apt_repository:
