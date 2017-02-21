@@ -1,4 +1,4 @@
-Ansible Role: YARN Repository
+Ansible Role: .Net Core SDK/Runtime 
 =========
 
 [![Build Status](https://travis-ci.org/ocha/ansible-role-dotnet-core.svg?branch=master)](https://travis-ci.org/ocha/ansible-role-dotnet-core)
