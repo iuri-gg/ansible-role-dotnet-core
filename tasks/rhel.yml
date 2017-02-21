@@ -1,4 +1,14 @@
 ---
+- name: .NET | Install dependencies
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - "libicu"
+    - "libunwind"
+    - "libicu-devel"
+    - "libunwind-devel"
+
 - name: .NET | Create directory
   file: path=/usr/local/dotnet state=directory mode=0755
 

@@ -56,6 +56,9 @@ script:
   # Ensure .Net Core is installed.
   - docker exec --tty "$(cat ${container_id})" env TERM=xterm which dotnet
 
+  # Ensure .Net Core can start.
+  - docker exec --tty "$(cat ${container_id})" env TERM=xterm dotnet --version
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
   email:
