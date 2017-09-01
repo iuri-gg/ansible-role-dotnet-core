@@ -18,7 +18,7 @@
   when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16"
 
 - name: .NET | Add apt key
-  apt_key: keyserver=apt-mo.trafficmanager.net id=417A0893
+  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=417A0893
   register: result
   until: '"failed" not in result'
   retries: 3
