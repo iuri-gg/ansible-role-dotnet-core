@@ -1,3 +1,3 @@
 ---
-dotnet_rhel_url: "https://go.microsoft.com/fwlink/?LinkID=835019"
-dotnet_ubuntu_package: "dotnet-dev-1.0.0-preview2-1-003177"
+dotnet_rhel_package: "dotnet-sdk-2.0.0"
+dotnet_ubuntu_package: "dotnet-sdk-2.0.0"
