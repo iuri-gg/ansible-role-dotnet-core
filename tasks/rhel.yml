@@ -11,6 +11,7 @@
 - name: .NET | Add YUM repository
   yum_repository:
     name: packages-microsoft-com-prod
+    description: Microsoft .NET RHEL Repository
     baseurl: https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod
     gpgcheck: yes
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
