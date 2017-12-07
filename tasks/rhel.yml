@@ -16,7 +16,6 @@
     gpgcheck: yes
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     enabled: yes
-  until: '"failed" not in result'
   retries: 3
   delay: 5
 
