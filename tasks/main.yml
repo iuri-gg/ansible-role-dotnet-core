@@ -1,6 +1,12 @@
 ---
 - include: rhel.yml
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'RedHat' or ansible_distribution == 'Amazon'
 
 - include: ubuntu.yml
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install dotnet core
+  package:
+    name: "{{ dotnet_package }}"
+    state: present
+    update_cache: true

@@ -1,39 +1,18 @@
 ---
-- name: .NET | Add rpm key
-  rpm_key:
-    key: https://packages.microsoft.com/keys/microsoft.asc
-    state: present
-  register: result
-  until: '"failed" not in result'
-  retries: 3
-  delay: 5
-
-- name: .NET | Add YUM repository
+- name: Add YUM repository
   yum_repository:
     name: packages-microsoft-com-prod
     description: Microsoft .NET RHEL Repository
     baseurl: https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod
+    enabled: yes
     gpgcheck: yes
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-    enabled: yes
-  retries: 3
-  delay: 5
+    state: present
 
-- name: .NET | Install dependencies
+- name: Install dependencies
   package:
     name: "{{ item }}"
     state: present
   with_items:
     - "libicu"
     - "libunwind"
-
-- name: .NET | Install dotnet core
-  package:
-    name: "{{ dotnet_rhel_package }}"
-    state: present
-    update_cache: true
-  register: result
-  until: '"failed" not in result'
-  retries: 3
-  delay: 5
-
