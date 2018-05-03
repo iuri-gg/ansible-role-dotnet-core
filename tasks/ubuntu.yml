@@ -1,38 +1,26 @@
 ---
-- name: .NET | Make sure HTTPS is supported by apt
+- name: Make sure HTTPS is supported by apt
   package:
     name: apt-transport-https
     state: present
-    update_cache: true
 
-- name: .NET | Add apt key
+- name: Import Microsoft APT key
   apt_key:
-    url: https://packages.microsoft.com/keys/microsoft.asc
+    url: "{{ dotnet_debian_repo_gpg_key_url }}"
     state: present
-  register: result
-  until: '"failed" not in result'
-  retries: 3
-  delay: 5
 
-- name: .NET | Add repo for Ubuntu Trusty
-  apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main
-    state: present
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "14"
-
-- name: .NET | Add repo for Ubuntu Xenial
+- name: Add repo for Ubuntu Xenial
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main
+    filename: "dotnetdev"
     state: present
+    update_cache: yes
   when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16"
 
-- name: .NET | Install dotnet core SDK
-  package:
-    name: "{{ dotnet_ubuntu_package }}"
+- name: Add repo for Ubuntu Bionic
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-bionic-prod bionic main
+    filename: "dotnetdev"
     state: present
-    update_cache: true
-  register: result
-  until: '"failed" not in result'
-  retries: 3
-  delay: 5
-
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "18"
