@@ -7,6 +7,12 @@
 
 - name: Install dotnet core
   package:
-    name: "{{ dotnet_package }}"
+    name: "{{ item }}"
     state: present
     update_cache: true
+  with_items: "{{ dotnet_packages }}"
+  
+- fail:
+    msg: The variable `dotnet_package` is deprecated. Use `dotnet_packages` instead
+  when: dotnet_package is defined
+  ignore_errors: yes
