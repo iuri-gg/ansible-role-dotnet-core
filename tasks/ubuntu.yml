@@ -10,26 +10,10 @@
     url: "{{ dotnet_debian_repo_gpg_key_url }}"
     state: present
 
-- name: Add repo for Ubuntu Xenial
+- name: Add repo for Ubuntu
   apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main
+    repo: "deb [arch=amd64] https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod {{ ansible_distribution_release }} main"
     filename: "dotnetdev"
     state: present
     update_cache: yes
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16"
-
-- name: Add repo for Ubuntu Bionic
-  apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-bionic-prod bionic main
-    filename: "dotnetdev"
-    state: present
-    update_cache: yes
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "18"
-  
-- name: Add repo for Ubuntu Focal
-  apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/20.04/prod focal main
-    filename: "dotnetdev"
-    state: present
-    update_cache: yes
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "20"
+  when: ansible_distribution == "Ubuntu"
