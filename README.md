@@ -16,10 +16,10 @@ Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    dotnet_package: "dotnet-sdk-3.0"
+    dotnet_packages: ["dotnet-sdk-3.0"]
     dotnet_debian_repo_gpg_key_url: "https://packages.microsoft.com/keys/microsoft.asc"
     
-Use `dotnet_package` variable described above to install specific version of dotnet SDK or runtime.
+Use `dotnet_packages` variable described above to install the specific versions of dotnet SDK or runtime.
 
 Dependencies
 ------------
